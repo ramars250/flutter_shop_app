@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_shop_app/models/product.dart';
+import 'package:flutter_shop_app/providers/product.dart';
 
 //提供變更通知
 class Products with ChangeNotifier {
@@ -42,6 +42,11 @@ class Products with ChangeNotifier {
   //建立一個getter的列表，返回_item
   List<Product> get items {
     return [..._items];
+  }
+  //建立比對id的方法
+  Product findById(String id) {
+    //firstWhere表示尋找items內的id，若找到的id與傳遞過來的id相同則傳回true
+    return _items.firstWhere((element) => element.id == id);
   }
 
   //建立一個添加函數，加入Product

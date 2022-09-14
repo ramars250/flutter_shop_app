@@ -24,10 +24,16 @@ class ProductsGrid extends StatelessWidget {
       //將loaderProducts全部更改為products變數
       itemCount: products.length,
       // loadedProducts.length,
-      itemBuilder: (context, i) => ProductItem(
-        products[i].id, products[i].title, products[i].imageUrl,
-        // loadedProducts[i].id,
-        // loadedProducts[i].title, loadedProducts[i].imageUrl
+      itemBuilder: (context, i) =>
+          //這邊表示利用監聽器，多次進行建構資料
+          ChangeNotifierProvider(
+        create: (context) => products[i],
+        //因為在上面提供資料，所以這邊的ProductItem就可以不用接收數據做為參數
+        child: ProductItem(
+          // products[i].id, products[i].title, products[i].imageUrl,
+          // loadedProducts[i].id,
+          // loadedProducts[i].title, loadedProducts[i].imageUrl
+        ),
       ),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           //設置該網格有幾列

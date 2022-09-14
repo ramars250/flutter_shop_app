@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-
-class Product {
+//將此檔案從models移至providers內，並在後面加上ChangeNotifier
+class Product with ChangeNotifier {
   //bool前面不加final是因為該屬性可以進行更改
   final String id;
   final String title;
@@ -18,4 +18,10 @@ class Product {
     required this.imageUrl,
     this.isFavorite = false,
   });
+  //建立變更isFavorite的函數
+  void toggleFavoriteStatus() {
+    isFavorite = !isFavorite;
+    //調用監聽器
+    notifyListeners();
+  }
 }
