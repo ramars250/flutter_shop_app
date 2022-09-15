@@ -25,9 +25,13 @@ class ProductsGrid extends StatelessWidget {
       itemCount: products.length,
       // loadedProducts.length,
       itemBuilder: (context, i) =>
+      //第二種方式
+      ChangeNotifierProvider.value(
+        value: products[i],
           //這邊表示利用監聽器，多次進行建構資料
-          ChangeNotifierProvider(
-        create: (context) => products[i],
+      //第一種方式
+      //     ChangeNotifierProvider(
+      //   create: (context) => products[i],
         //因為在上面提供資料，所以這邊的ProductItem就可以不用接收數據做為參數
         child: ProductItem(
           // products[i].id, products[i].title, products[i].imageUrl,
